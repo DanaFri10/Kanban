@@ -1,0 +1,117 @@
+﻿<Window x:Class="Frontend.View.BoardView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Frontend.View"
+        mc:Ignorable="d"
+        Title="My Board" Height="600" Width="1200">
+    <Grid Margin="10">
+        <DockPanel LastChildFill="False" Margin="10" HorizontalAlignment="Center">
+            <Label DockPanel.Dock="Top" Content="{Binding Path=Board.BoardName}" HorizontalAlignment="Center" FontSize="30" FontFamily="Segoe UI Black" FontWeight="Bold" Margin="10"/>
+            <Label DockPanel.Dock="Left" Content="Owner:" HorizontalAlignment="Center" FontSize="20" FontFamily="Callibri Light" Margin="10"/>
+            <Label DockPanel.Dock="Top" Content="{Binding Path=Board.BoardOwner}" HorizontalAlignment="Left" FontSize="20" FontFamily="Callibri Light" Margin="10"/>
+            <DockPanel LastChildFill="True" HorizontalAlignment="Center">
+                <Grid DockPanel.Dock="Top" Height="40" HorizontalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="350"></ColumnDefinition>
+                        <ColumnDefinition Width="350"></ColumnDefinition>
+                        <ColumnDefinition Width="350"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="17">Backlog</Label>
+                    <Label Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="17">In Progress</Label>
+                    <Label Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="17">Done</Label>
+                </Grid>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="350">
+                    <ListBox ItemsSource="{Binding Path=Board.Columns[0].Tasks}" SelectedItem="{Binding Path=SelectedTask, Mode=TwoWay}" HorizontalAlignment="Center">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="#FF5A8EEE" BorderThickness="1" HorizontalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="330">
+                                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="110">
+                                            <Label Content="TaskID:" FontWeight="SemiBold" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="Creation Time:" FontWeight="SemiBold" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="Title:" FontWeight="SemiBold" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="Description:" FontWeight="SemiBold" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="Due Date:" FontWeight="SemiBold" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="Assignee:" FontWeight="SemiBold" HorizontalAlignment="Center" FontSize="15"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="220">
+                                            <Label Content="{Binding Path=TaskID}" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="{Binding Path=CreationTime}" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="{Binding Path=Title}" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="{Binding Path=Description}" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="{Binding Path=DueDate}" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="{Binding Path=AssigneeUser}" HorizontalAlignment="Center" FontSize="15"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="350">
+                    <ListBox ItemsSource="{Binding Path=Board.Columns[1].Tasks}" SelectedItem="{Binding Path=SelectedTask, Mode=TwoWay}" HorizontalAlignment="Center">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="#FF5A8EEE" BorderThickness="1" HorizontalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="330">
+                                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="110">
+                                            <Label Content="TaskID:" FontWeight="SemiBold" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="Creation Time:" FontWeight="SemiBold" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="Title:" FontWeight="SemiBold" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="Description:" FontWeight="SemiBold" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="Due Date:" FontWeight="SemiBold" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="Assignee:" FontWeight="SemiBold" HorizontalAlignment="Center" FontSize="15"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="220">
+                                            <Label Content="{Binding Path=TaskID}" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="{Binding Path=CreationTime}" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="{Binding Path=Title}" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="{Binding Path=Description}" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="{Binding Path=DueDate}" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="{Binding Path=AssigneeUser}" HorizontalAlignment="Center" FontSize="15"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="350">
+                    <ListBox ItemsSource="{Binding Path=Board.Columns[2].Tasks}" SelectedItem="{Binding Path=SelectedTask, Mode=TwoWay}" HorizontalAlignment="Center">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="#FF5A8EEE" BorderThickness="1" HorizontalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="330">
+                                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="110">
+                                            <Label Content="TaskID:" FontWeight="SemiBold" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="Creation Time:" FontWeight="SemiBold" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="Title:" FontWeight="SemiBold" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="Description:" FontWeight="SemiBold" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="Due Date:" FontWeight="SemiBold" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="Assignee:" FontWeight="SemiBold" HorizontalAlignment="Center" FontSize="15"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="220">
+                                            <Label Content="{Binding Path=TaskID}" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="{Binding Path=CreationTime}" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="{Binding Path=Title}" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="{Binding Path=Description}" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="{Binding Path=DueDate}" HorizontalAlignment="Center" FontSize="15"/>
+                                            <Label Content="{Binding Path=AssigneeUser}" HorizontalAlignment="Center" FontSize="15"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </DockPanel>
+        </DockPanel>
+        <Button Name="ReturnToBoards" Click="ReturnToBoards_Click" Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Image Source="\Resources\back.png" Width="50" Height="50"></Image>
+        </Button>
+
+
+    </Grid>
+</Window>

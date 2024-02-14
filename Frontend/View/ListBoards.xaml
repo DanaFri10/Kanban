@@ -1,0 +1,53 @@
+﻿<Window x:Class="Frontend.View.ListBoards"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Frontend.View" xmlns:model="clr-namespace:Frontend.Model" d:DataContext="{d:DesignInstance Type=model:UserModel}"
+        mc:Ignorable="d"
+        Title="ListBoards" Height="469" Width="800">
+    <Grid Margin="29,60,0,17" HorizontalAlignment="Left">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="207*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="166*"/>
+            <ColumnDefinition Width="306*"/>
+            <ColumnDefinition Width="111*"/>
+            <ColumnDefinition Width="91*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListBox ItemsSource="{Binding BoardList.Boards}" RenderTransformOrigin="0.51,0.077" FontSize="14" Grid.ColumnSpan="4" Margin="22,2,21,8" Grid.RowSpan="2" SelectedItem="{Binding SelectedBoard, Mode=TwoWay}" SelectionChanged="onClick">
+            <ListBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.199" AngleX="0.052"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="1.354" X="-0.105"/>
+                </TransformGroup>
+            </ListBox.RenderTransform>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="1" OpacityMask="{x:Null}" Opacity="2" BorderBrush="#FF5A8EEE" HorizontalAlignment="Center" Width="690">
+                        <StackPanel Orientation="Vertical" >
+                            <Label Content="{Binding BoardName, Mode=TwoWay}" BorderBrush="{x:Null}" HorizontalContentAlignment="Center" FontSize="17" FontWeight="Bold"/>
+                            <Label Content="{Binding BoardOwner, Mode=TwoWay}" ContentStringFormat="Board owner: {0}" BorderBrush="{x:Null}" Background="{Binding DataContext.BackgroundColor, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}" HorizontalContentAlignment="Center"/>
+                            <Label Content="{Binding TasksCount, Mode=TwoWay}" ContentStringFormat="Tasks count: {0}" BorderBrush="{x:Null}" Background="{Binding DataContext.BackgroundColor, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}" HorizontalContentAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+
+
+        <Grid Margin="2,-53,0,60" HorizontalAlignment="Left" Width="751" Grid.ColumnSpan="4">
+            <Label Content="{Binding User.Email, Mode=TwoWay}" ContentStringFormat="Board list of {0}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontFamily="Segoe UI Black" FontWeight="Bold" Width="706" Height="38" HorizontalContentAlignment="Center"/>
+            <Button Content="Logout" Name="Logout" Click="Logout_Click" FontSize="14" Width="70" IsDefault="True" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Margin="0,0,0,15" Background="White" BorderBrush="DarkGray"/>
+        </Grid>
+
+
+
+    </Grid>
+</Window>
